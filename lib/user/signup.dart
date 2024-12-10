@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_series_app/main.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/ui_helper.dart';
@@ -46,13 +48,38 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           const SizedBox(height: 30),
           Center(
-              child:
-                  UiHelper.customButton(voidCallBack: () {}, text: 'Sign Up')),
+              child: UiHelper.customButton(
+                  voidCallBack: () {
+                    signUp(
+                        email: emailController.text,
+                        password: passwordController.text);
+                  },
+                  text: 'Sign Up')),
           const SizedBox(height: 20),
         ],
       ),
     );
   }
 
-  signUp({required String email, required String password}) async {}
+  signUp({required String email, required String password}) async {
+    if (email == '' && password == '') {
+      UiHelper.customALertBox(context: context, text: 'Enter required fields.');
+    } else {
+      // UserCredential? userCredential;
+      try {
+        // UserCredential? userCredential =
+        await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(email: email, password: password)
+            .then((value) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const MyHomePage(title: 'Home page')));
+          return null;
+        });
+      } on FirebaseAuthException catch (e) {
+        UiHelper.customALertBox(context: context, text: e.code.toString());
+      }
+    }
+  }
 }

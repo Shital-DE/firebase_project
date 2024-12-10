@@ -38,4 +38,24 @@ class UiHelper {
           )),
     );
   }
+
+  static customALertBox({required BuildContext context, required String text}) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              text,
+              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('OK'))
+            ],
+          );
+        });
+  }
 }
