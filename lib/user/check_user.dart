@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_series_app/main.dart';
-import 'package:firebase_series_app/user/login.dart';
+// import 'package:firebase_series_app/user/login.dart';
 import 'package:firebase_series_app/user/phone_auth.dart';
 import 'package:flutter/material.dart';
 
