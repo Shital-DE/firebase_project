@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_series_app/main.dart';
+import 'package:firebase_series_app/user/forgot_password.dart';
 import 'package:firebase_series_app/user/signup.dart';
 import 'package:firebase_series_app/widgets/ui_helper.dart';
 import 'package:flutter/material.dart';
@@ -70,9 +73,22 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 child: const Text(
                   'Sign up',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                 ))
-          ])
+          ]),
+          const SizedBox(height: 20),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ForgotPassword()));
+            },
+            child: const Text(
+              'Forgot password?',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            ),
+          ),
         ],
       ),
     );
