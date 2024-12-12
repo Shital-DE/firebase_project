@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_series_app/main.dart';
 import 'package:firebase_series_app/user/login.dart';
+import 'package:firebase_series_app/user/phone_auth.dart';
 import 'package:flutter/material.dart';
 
 class CheckUser extends StatelessWidget {
@@ -17,7 +18,8 @@ class CheckUser extends StatelessWidget {
         if (snapshot.hasData) {
           return const MyHomePage(title: 'Home page');
         } else {
-          return const LoginPage();
+          return const PhoneAuth();
+          // const LoginPage();
         }
       },
     );

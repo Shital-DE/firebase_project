@@ -24,7 +24,7 @@ class UiHelper {
       {required VoidCallback voidCallBack, required String text}) {
     return SizedBox(
       height: 50,
-      width: 200,
+      width: 250,
       child: FilledButton(
           style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
